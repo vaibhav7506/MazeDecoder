@@ -2,9 +2,9 @@
 
 A pathfinding and maze algorithm visualizer built in three separately committed phases.
 
-**Current status: Phase 1 only — standalone Java library.** Phase 2 (Spring Boot,
-REST and WebSocket streaming), Phase 3 (browser visualization and deployment),
-and the final documentation audit are pending. There is no deployed demo yet.
+**Current status: Phases 1–2 implemented — core library and Spring Boot API.**
+Phase 3 (browser visualization and deployment) and the final documentation audit
+are pending. There is no deployed demo yet.
 
 ## Build and test
 
@@ -21,9 +21,22 @@ On Linux/macOS:
 ./mvnw verify
 ```
 
-The library JAR is `target/maze-core-1.0.0-SNAPSHOT.jar`. It has **zero runtime
-dependencies**. JUnit is test-only. Test reports are in `target/surefire-reports/`;
-the recorded verification output is in [docs/PHASE_1_REPORT.md](docs/PHASE_1_REPORT.md).
+The standalone library JAR is `core/target/maze-core-1.0.0-SNAPSHOT.jar`. It has
+**zero runtime dependencies**. JUnit is test-only in that module. The runnable
+server is `server/target/maze-server-1.0.0-SNAPSHOT.jar`. Test reports are in each
+module's `target/surefire-reports/`. Recorded verification:
+[Phase 1](docs/PHASE_1_REPORT.md), [Phase 2](docs/PHASE_2_REPORT.md).
+
+```powershell
+java -jar server/target/maze-server-1.0.0-SNAPSHOT.jar
+# In another terminal:
+java scripts/WebSocketSmoke.java
+```
+
+The server listens on port 8080 by default (`PORT` overrides it), with REST under
+`/api/maze` and WebSocket at `/ws/maze`. There is no page at `/` yet.
+See [the API and streaming contract](docs/STREAMING_CONTRACT.md) for request/response
+examples, race tagging, client-paced playback, bounded storage, and configuration.
 
 ## Public API
 

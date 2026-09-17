@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: mazedecoder-api
+    runtime: docker
+    plan: free
+    region: oregon
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /api/health
+    envVars:
+      - key: MAZE_ALLOWED_ORIGINS
+        sync: false

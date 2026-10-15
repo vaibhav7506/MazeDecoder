@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Build a maze, watch algorithms search, and compare their paths. A live pathfinding laboratory.">
+  <title>MazeDecoder — Pathfinding lab</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/styles.css">
+  <script src="/config.js"></script><script type="module" src="/app.js"></script>
+</head>
+<body>
+  <header class="topbar"><a class="brand" href="/" aria-label="MazeDecoder home"><img src="/favicon.svg" width="34" height="34" alt="">Maze<span>Decoder</span></a><span class="edition">AN INTERACTIVE ALGORITHM LAB</span><div class="connection" id="connection" role="status"><i></i><span>Connecting…</span></div></header>
+  <main>
+    <div class="intro"><div><p class="eyebrow">PATHFINDING, MADE VISIBLE</p><h1>One maze. Different minds.</h1><p class="lede">Carve a maze. Watch the search. See what each algorithm discovers.</p></div><span class="index-mark" aria-hidden="true">N° 001 <span>↳</span></span></div>
+    <div class="workspace">
+      <aside class="controls">
+        <form id="generate-form">
+          <div class="section-heading"><span class="step-number">01</span><h2>Build your maze</h2></div>
+          <label for="size">Grid size <span id="cell-count">400 cells</span></label>
+          <select id="size"><option value="10">10 × 10 · Small</option><option value="20" selected>20 × 20 · Medium</option><option value="30">30 × 30 · Large</option><option value="50">50 × 50 · Extra large</option><option value="100">100 × 100 · Maximum</option></select>
+          <label for="generator">Maze algorithm</label>
+          <select id="generator"><option value="DFS">Depth-first search</option><option value="PRIM">Randomized Prim’s</option><option value="KRUSKAL">Randomized Kruskal’s</option></select>
+          <p class="field-note" id="generator-note">Long corridors, unexpected turns.</p>
+          <label for="seed">Random seed</label><div class="seed-row"><input id="seed" type="number" step="1" min="-2147483648" max="2147483647" value="4217" required><button id="randomize" class="icon-button" type="button" aria-label="Randomize seed" title="Randomize seed">⤨</button></div>
+          <button id="generate" class="primary" type="submit" disabled>Generate maze <span>↗</span></button>
+        </form>
+        <section class="search-controls"><div class="section-heading"><span class="step-number">02</span><h2>Choose your explorers</h2></div><p class="field-note">Pick one to solve, or more to race.</p>
+          <div class="algorithm-options">
+            <label class="algorithm-option"><input type="checkbox" name="algorithm" value="BFS" checked><span class="swatch bfs"></span><span><b>Breadth-first</b><small>Explore every direction</small></span><span class="abbr">BFS</span></label>
+            <label class="algorithm-option"><input type="checkbox" name="algorithm" value="DFS"><span class="swatch dfs"></span><span><b>Depth-first</b><small>Follow a single branch</small></span><span class="abbr">DFS</span></label>
+            <label class="algorithm-option"><input type="checkbox" name="algorithm" value="DIJKSTRA"><span class="swatch dijkstra"></span><span><b>Dijkstra</b><small>Lowest cost first</small></span><span class="abbr">DIJ</span></label>
+            <label class="algorithm-option"><input type="checkbox" name="algorithm" value="ASTAR" checked><span class="swatch astar"></span><span><b>A* search</b><small>Let the goal guide you</small></span><span class="abbr">A*</span></label>
+          </div>
+          <button id="run" class="secondary" disabled>Race 2 algorithms <span>→</span></button>
+        </section>
+        <section class="playback-controls"><label for="speed">Playback speed <output id="speed-value">400 steps/s</output></label><input id="speed" type="range" min="0" max="4" step="1" value="2"><div class="range-labels"><span>Take it slow</span><span>Full speed</span></div><div class="utility-buttons"><button id="pause" type="button" disabled>Ⅱ Pause</button><button id="reset" type="button">↺ Reset</button></div></section>
+      </aside>
+      <section class="visualization" aria-label="Maze visualization">
+        <div class="canvas-toolbar"><div><span class="live-dot"></span><span id="stage-label">YOUR PLAYGROUND</span></div><span class="grid-meta" id="grid-meta">20 × 20 / SEED 4217</span></div>
+        <div id="panels" class="panels"></div>
+        <div class="canvas-footer"><div class="legend"><span><i class="start-key"></i>Start</span><span><i class="end-key"></i>Finish</span><span><i class="explored-key"></i>Explored</span><span><i class="path-key"></i>Final path</span></div><span id="progress">Ready when you are</span></div>
+        <div id="notice" class="notice" role="status" aria-live="polite">Connecting to the lab…</div>
+        <section id="results" class="results" hidden><div class="results-title"><div><p class="eyebrow">THE RESULTS ARE IN</p><h2>Same maze. A different journey.</h2></div><span class="sort-note">Sorted by cells explored</span></div><div class="table-wrap"><table><thead><tr><th>Algorithm</th><th>Explored</th><th>Path length</th><th>Compute time</th></tr></thead><tbody id="results-body"></tbody></table></div><p class="results-note">Path length counts moves. Compute time excludes animation and network time; tiny differences vary between runs.</p></section>
+      </section>
+    </div>
+    <footer><span>BUILT TO EXPLORE, ONE CELL AT A TIME.</span><p>The free backend sleeps when idle. On a first visit, allow about a minute for it to wake up.</p></footer>
+  </main>
+</body>
+</html>

@@ -1,0 +1,6 @@
+.git
+**/target
+frontend
+docs
+scripts
+.vercel

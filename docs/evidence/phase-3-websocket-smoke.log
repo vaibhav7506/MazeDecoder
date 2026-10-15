@@ -1,0 +1,25 @@
+>> {"requestId":"smoke-generate","operation":"generate","algorithm":"DFS","width":2,"height":2,"seed":42}
+<< {"type":"started","requestId":"smoke-generate","operation":"generate","mazeId":"7c825598-4cc2-4546-acca-23c427dd0417","algorithm":"DFS","sequence":null,"data":{"width":2,"height":2,"start":{"x":0,"y":0},"end":{"x":1,"y":1},"pacing":"client"}}
+<< {"type":"step","requestId":"smoke-generate","operation":"generate","mazeId":"7c825598-4cc2-4546-acca-23c427dd0417","algorithm":"DFS","sequence":0,"data":{"from":{"x":0,"y":0},"to":{"x":0,"y":1}}}
+<< {"type":"step","requestId":"smoke-generate","operation":"generate","mazeId":"7c825598-4cc2-4546-acca-23c427dd0417","algorithm":"DFS","sequence":1,"data":{"from":{"x":0,"y":1},"to":{"x":1,"y":1}}}
+<< {"type":"step","requestId":"smoke-generate","operation":"generate","mazeId":"7c825598-4cc2-4546-acca-23c427dd0417","algorithm":"DFS","sequence":2,"data":{"from":{"x":1,"y":1},"to":{"x":1,"y":0}}}
+<< {"type":"complete","requestId":"smoke-generate","operation":"generate","mazeId":"7c825598-4cc2-4546-acca-23c427dd0417","algorithm":"DFS","sequence":null,"data":{"width":2,"height":2,"start":{"x":0,"y":0},"end":{"x":1,"y":1},"cells":[{"x":0,"y":0,"walls":{"north":true,"east":true,"south":false,"west":true},"visited":true},{"x":1,"y":0,"walls":{"north":true,"east":true,"south":false,"west":true},"visited":true},{"x":0,"y":1,"walls":{"north":false,"east":false,"south":true,"west":true},"visited":true},{"x":1,"y":1,"walls":{"north":false,"east":true,"south":true,"west":false},"visited":true}]}}
+>> {"requestId":"smoke-solve","operation":"solve","mazeId":"7c825598-4cc2-4546-acca-23c427dd0417","algorithm":"BFS"}
+<< {"type":"started","requestId":"smoke-solve","operation":"solve","mazeId":"7c825598-4cc2-4546-acca-23c427dd0417","algorithm":null,"sequence":null,"data":{"width":2,"height":2,"start":{"x":0,"y":0},"end":{"x":1,"y":1},"pacing":"client"}}
+<< {"type":"step","requestId":"smoke-solve","operation":"solve","mazeId":"7c825598-4cc2-4546-acca-23c427dd0417","algorithm":"BFS","sequence":0,"data":{"x":0,"y":0}}
+<< {"type":"step","requestId":"smoke-solve","operation":"solve","mazeId":"7c825598-4cc2-4546-acca-23c427dd0417","algorithm":"BFS","sequence":1,"data":{"x":0,"y":1}}
+<< {"type":"step","requestId":"smoke-solve","operation":"solve","mazeId":"7c825598-4cc2-4546-acca-23c427dd0417","algorithm":"BFS","sequence":2,"data":{"x":1,"y":1}}
+<< {"type":"algorithm_complete","requestId":"smoke-solve","operation":"solve","mazeId":"7c825598-4cc2-4546-acca-23c427dd0417","algorithm":"BFS","sequence":null,"data":{"finalPath":[{"x":0,"y":0},{"x":0,"y":1},{"x":1,"y":1}],"stats":{"cellsExplored":3,"pathLength":2,"pathCost":2.0,"elapsedNanos":97303}}}
+<< {"type":"complete","requestId":"smoke-solve","operation":"solve","mazeId":"7c825598-4cc2-4546-acca-23c427dd0417","algorithm":null,"sequence":null,"data":null}
+>> {"requestId":"smoke-race","operation":"race","mazeId":"7c825598-4cc2-4546-acca-23c427dd0417","algorithms":["BFS","ASTAR"]}
+<< {"type":"started","requestId":"smoke-race","operation":"race","mazeId":"7c825598-4cc2-4546-acca-23c427dd0417","algorithm":null,"sequence":null,"data":{"width":2,"height":2,"start":{"x":0,"y":0},"end":{"x":1,"y":1},"pacing":"client"}}
+<< {"type":"step","requestId":"smoke-race","operation":"race","mazeId":"7c825598-4cc2-4546-acca-23c427dd0417","algorithm":"BFS","sequence":0,"data":{"x":0,"y":0}}
+<< {"type":"step","requestId":"smoke-race","operation":"race","mazeId":"7c825598-4cc2-4546-acca-23c427dd0417","algorithm":"ASTAR","sequence":0,"data":{"x":0,"y":0}}
+<< {"type":"step","requestId":"smoke-race","operation":"race","mazeId":"7c825598-4cc2-4546-acca-23c427dd0417","algorithm":"BFS","sequence":1,"data":{"x":0,"y":1}}
+<< {"type":"step","requestId":"smoke-race","operation":"race","mazeId":"7c825598-4cc2-4546-acca-23c427dd0417","algorithm":"ASTAR","sequence":1,"data":{"x":0,"y":1}}
+<< {"type":"step","requestId":"smoke-race","operation":"race","mazeId":"7c825598-4cc2-4546-acca-23c427dd0417","algorithm":"BFS","sequence":2,"data":{"x":1,"y":1}}
+<< {"type":"algorithm_complete","requestId":"smoke-race","operation":"race","mazeId":"7c825598-4cc2-4546-acca-23c427dd0417","algorithm":"BFS","sequence":null,"data":{"finalPath":[{"x":0,"y":0},{"x":0,"y":1},{"x":1,"y":1}],"stats":{"cellsExplored":3,"pathLength":2,"pathCost":2.0,"elapsedNanos":45301}}}
+<< {"type":"step","requestId":"smoke-race","operation":"race","mazeId":"7c825598-4cc2-4546-acca-23c427dd0417","algorithm":"ASTAR","sequence":2,"data":{"x":1,"y":1}}
+<< {"type":"algorithm_complete","requestId":"smoke-race","operation":"race","mazeId":"7c825598-4cc2-4546-acca-23c427dd0417","algorithm":"ASTAR","sequence":null,"data":{"finalPath":[{"x":0,"y":0},{"x":0,"y":1},{"x":1,"y":1}],"stats":{"cellsExplored":3,"pathLength":2,"pathCost":2.0,"elapsedNanos":42111}}}
+<< {"type":"complete","requestId":"smoke-race","operation":"race","mazeId":"7c825598-4cc2-4546-acca-23c427dd0417","algorithm":null,"sequence":null,"data":null}
+SMOKE PASS: generation, solve, and tagged race completed over real WebSockets.

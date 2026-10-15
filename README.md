@@ -2,9 +2,11 @@
 
 A pathfinding and maze algorithm visualizer built in three separately committed phases.
 
-**Current status: Phases 1–2 implemented — core library and Spring Boot API.**
-Phase 3 (browser visualization and deployment) and the final documentation audit
-are pending. There is no deployed demo yet.
+**Current status: all three phases are implemented, deployed, and documented.**
+
+The public visualizer is available at [mazedecoder.vercel.app](https://mazedecoder.vercel.app/).
+Its Spring Boot API is deployed at
+[mazedecoder-api.onrender.com](https://mazedecoder-api.onrender.com/api/health).
 
 ## Build and test
 
@@ -34,7 +36,9 @@ java scripts/WebSocketSmoke.java
 ```
 
 The server listens on port 8080 by default (`PORT` overrides it), with REST under
-`/api/maze` and WebSocket at `/ws/maze`. There is no page at `/` yet.
+`/api/maze` and WebSocket at `/ws/maze`. The browser visualizer is in `frontend/`;
+for a local static build, run `npm.cmd test` and `npm.cmd run build` from that
+directory, then serve `frontend/dist/` over HTTP.
 See [the API and streaming contract](docs/STREAMING_CONTRACT.md) for request/response
 examples, race tagging, client-paced playback, bounded storage, and configuration.
 

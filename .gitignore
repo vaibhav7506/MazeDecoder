@@ -2,3 +2,8 @@ target/
 /.idea/
 /.vscode/
 *.iml
+node_modules/
+frontend/dist/
+.vercel/
+.env
+.env.*
